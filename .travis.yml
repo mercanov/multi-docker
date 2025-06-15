@@ -17,3 +17,12 @@ after_success:
   - docker build -t mustafa159/multi-nginx ./nginx
   - docker build -t mustafa159/multi-server ./server
   - docker build -t mustafa159/multi-worker ./worker
+
+  #4. Login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID --password-stdin"
+
+  #5. Take the builded images and push them to docker-hub
+  - docker push mustafa159/multi-client
+  - docker push mustafa159/multi-nginx
+  - docker push mustafa159/multi-server
+  - docker push mustafa159/multi-worker
